@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Contact | ZUNO</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#faf9f6;
+    color:#111;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+/* HEADER */
+
+header{
+    height:82px;
+    padding:0 5%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid #ddd;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:6px;
+}
+
+nav{
+    display:flex;
+    gap:38px;
+}
+
+nav a{
+    font-size:13px;
+    font-weight:700;
+}
+
+nav a:hover{
+    opacity:.5;
+}
+
+.bag{
+    padding:11px 18px;
+
+    border:1px solid #111;
+    border-radius:40px;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+/* PAGE */
+
+.contact{
+    width:min(1250px,90%);
+    margin:90px auto 120px;
+
+    display:grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap:100px;
+}
+
+/* LEFT */
+
+.eyebrow{
+    margin-bottom:22px;
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+.contact h1{
+    font-size:clamp(
+        65px,
+        9vw,
+        120px
+    );
+
+    line-height:.82;
+
+    letter-spacing:-7px;
+}
+
+.intro{
+    max-width:430px;
+
+    margin-top:40px;
+
+    color:#666;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+.help{
+    margin-top:60px;
+
+    display:grid;
+
+    gap:30px;
+}
+
+.help-item{
+    padding-top:20px;
+
+    border-top:1px solid #ddd;
+}
+
+.help-item h3{
+    margin-bottom:8px;
+
+    font-size:14px;
+}
+
+.help-item p{
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* FORM */
+
+.form-box{
+    padding:45px;
+
+    background:#f0eee8;
+
+    border-radius:16px;
+}
+
+.form-box h2{
+    margin-bottom:35px;
+
+    font-size:30px;
+}
+
+.field{
+    margin-bottom:18px;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:11px;
+    font-weight:800;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    outline:none;
+}
+
+.field input,
+.field select{
+    height:55px;
+
+    padding:0 15px;
+}
+
+.field textarea{
+    min-height:170px;
+
+    padding:15px;
+
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:#111;
+}
+
+.name-row{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+}
+
+.send{
+    width:100%;
+
+    padding:18px;
+
+    border:0;
+
+    border-radius:50px;
+
+    background:#111;
+    color:white;
+
+    cursor:pointer;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:1.5px;
+}
+
+.send:hover{
+    background:#333;
+}
+
+.form-status{
+    display:none;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* FAQ */
+
+.faq{
+    padding:100px 7%;
+
+    background:#111;
+    color:white;
+}
+
+.faq-title{
+    margin-bottom:60px;
+}
+
+.faq-title p{
+    color:#aaa;
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.faq-title h2{
+    font-size:clamp(
+        50px,
+        7vw,
+        90px
+    );
+
+    letter-spacing:-5px;
+}
+
+.question{
+    max-width:900px;
+
+    padding:25px 0;
+
+    border-top:1px solid #333;
+}
+
+.question h3{
+    margin-bottom:10px;
+
+    font-size:17px;
+}
+
+.question p{
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    padding:80px 6% 30px;
+
+    background:#111;
+    color:white;
+
+    border-top:1px solid #333;
+}
+
+.footer-logo{
+    font-size:clamp(
+        90px,
+        17vw,
+        230px
+    );
+
+    font-weight:900;
+
+    line-height:.75;
+
+    letter-spacing:-9px;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    margin-top:70px;
+
+    color:#aaa;
+
+    font-size:12px;
+}
+
+.copyright{
+    margin-top:40px;
+
+    padding-top:20px;
+
+    border-top:1px solid #333;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    header{
+        height:70px;
+
+        padding:0 18px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .contact{
+        width:calc(100% - 36px);
+
+        margin:60px auto 80px;
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+    }
+
+    .contact h1{
+        font-size:70px;
+
+        letter-spacing:-5px;
+    }
+
+    .form-box{
+        padding:25px;
+    }
+
+    .faq{
+        padding:80px 22px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .name-row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<a
+href="index.html"
+class="logo"
+>
+ZUNO
+</a>
+
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="shop.html?category=cats">
+Cats
+</a>
+
+<a href="shop.html?category=dogs">
+Dogs
+</a>
+
+<a href="about.html">
+Our Story
+</a>
+
+</nav>
+
+
+<a
+href="cart.html"
+class="bag"
+>
+
+Bag
+(<span id="cart-count">0</span>)
+
+</a>
+
+</header>
+
+
+
+<main>
+
+
+<section class="contact">
+
+
+<div>
+
+<p class="eyebrow">
+WE'RE HERE TO HELP
+</p>
+
+<h1>
+Talk<br>
+to ZUNO.
+</h1>
+
+<p class="intro">
+
+Have a question about a product,
+an order or ZUNO? Send us a message
+and we'll help you find the right answer.
+
+</p>
+
+
+<div class="help">
+
+
+<div class="help-item">
+
+<h3>
+Product questions
+</h3>
+
+<p>
+Questions about sizing, features
+or how a ZUNO product works.
+</p>
+
+</div>
+
+
+<div class="help-item">
+
+<h3>
+Order support
+</h3>
+
+<p>
+Need help with an existing order?
+Include your order number when
+contacting support.
+</p>
+
+</div>
+
+
+<div class="help-item">
+
+<h3>
+Shipping questions
+</h3>
+
+<p>
+Delivery options depend on the
+destination and product.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- CONTACT FORM -->
+
+<div class="form-box">
+
+<h2>
+Send us a message.
+</h2>
+
+
+<form id="contact-form">
+
+
+<div class="name-row">
+
+
+<div class="field">
+
+<label for="firstName">
+First name
+</label>
+
+<input
+type="text"
+id="firstName"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="lastName">
+Last name
+</label>
+
+<input
+type="text"
+id="lastName"
+required
+>
+
+</div>
+
+
+</div>
+
+
+<div class="field">
+
+<label for="email">
+Email
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="you@example.com"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="topic">
+What can we help with?
+</label>
+
+<select
+id="topic"
+required
+>
+
+<option value="">
+Choose a topic
+</option>
+
+<option>
+Product question
+</option>
+
+<option>
+Order support
+</option>
+
+<option>
+Shipping
+</option>
+
+<option>
+Returns
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="order">
+Order number (optional)
+</label>
+
+<input
+type="text"
+id="order"
+placeholder="Example: ZUNO-1001"
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="message">
+Message
+</label>
+
+<textarea
+id="message"
+placeholder="How can we help?"
+required
+></textarea>
+
+</div>
+
+
+<button
+type="submit"
+class="send"
+>
+SEND MESSAGE →
+</button>
+
+
+<div
+class="form-status"
+id="form-status"
+>
+
+Your form design is ready.
+
+Connect this form to your email
+service or backend before launching
+the store so customer messages
+are actually delivered.
+
+</div>
+
+
+</form>
+
+</div>
+
+
+</section>
+
+
+
+<!-- FAQ -->
+
+<section class="faq">
+
+
+<div class="faq-title">
+
+<p>
+QUICK ANSWERS
+</p>
+
+<h2>
+Before you ask.
+</h2>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+Where can I see your products?
+</h3>
+
+<p>
+
+Visit the ZUNO Shop to browse
+our current cat and dog products.
+
+</p>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+How much does shipping cost?
+</h3>
+
+<p>
+
+Shipping costs depend on the product
+and delivery destination. Final shipping
+information should be shown during
+checkout once fulfillment is connected.
+
+</p>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+Can I change my order?
+</h3>
+
+<p>
+
+If order support is available for your
+order, contact ZUNO as soon as possible
+after placing it. Changes cannot be
+guaranteed after fulfillment begins.
+
+</p>
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+
+<div class="footer-logo">
+ZUNO
+</div>
+
+
+<div class="footer-links">
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="shop.html?category=cats">
+Cats
+</a>
+
+<a href="shop.html?category=dogs">
+Dogs
+</a>
+
+<a href="about.html">
+Our Story
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 ZUNO —
+Made for pets.
+Designed for people.
+
+</div>
+
+<!-- RASSDIGITAL CREDIT -->
+
+<div
+    style="
+        margin-top:18px;
+        padding-top:18px;
+        border-top:1px solid rgba(255,255,255,0.08);
+        display:flex;
+        align-items:center;
+        gap:5px;
+        color:#777;
+        font-size:11px;
+        font-weight:400;
+        letter-spacing:0.2px;
+    "
+>
+    <span>Powered &amp; Designed by</span>
+
+    <a
+        href="https://rassdigitals.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+            color:#aaa;
+            font-size:11px;
+            font-weight:600;
+            text-decoration:none;
+        "
+    >
+        RassDigital
+    </a>
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* CART COUNT */
+
+const cart =
+JSON.parse(
+    localStorage.getItem(
+        "zunoCart"
+    )
+) || [];
+
+
+const total =
+cart.reduce(
+    (sum,item) =>
+        sum + item.quantity,
+    0
+);
+
+
+document.getElementById(
+    "cart-count"
+).textContent =
+    total;
+
+
+/* CONTACT FORM */
+
+const form =
+document.getElementById(
+    "contact-form"
+);
+
+
+const status =
+document.getElementById(
+    "form-status"
+);
+
+
+form.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        status.style.display =
+            "block";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

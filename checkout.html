@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | ZUNO</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #faf9f6;
+    color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* HEADER */
+
+header {
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 7px;
+}
+
+.secure-header {
+    color: #666;
+    font-size: 12px;
+}
+
+
+/* PAGE */
+
+.checkout-page {
+    width: min(1250px, 92%);
+    margin: 60px auto 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(350px, .7fr);
+
+    gap: 80px;
+}
+
+
+/* LEFT */
+
+.checkout-label {
+    color: #777;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.checkout-title {
+    font-size: clamp(48px, 6vw, 80px);
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 55px;
+}
+
+
+/* SECTIONS */
+
+.form-section {
+    margin-bottom: 45px;
+}
+
+.form-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+
+/* INPUTS */
+
+.field {
+    margin-bottom: 14px;
+}
+
+.field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.field input,
+.field select {
+    width: 100%;
+
+    height: 54px;
+
+    padding: 0 16px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    background: white;
+
+    outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #111;
+}
+
+.two-columns {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.three-columns {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr .8fr;
+
+    gap: 14px;
+}
+
+
+/* SHIPPING METHOD */
+
+.shipping-option {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border: 1px solid #111;
+
+    border-radius: 10px;
+
+    padding: 20px;
+}
+
+.shipping-option-left {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.shipping-option input {
+    accent-color: #111;
+}
+
+.shipping-name {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.shipping-description {
+    color: #777;
+
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+
+/* SUMMARY */
+
+.summary {
+    background: #f0eee8;
+
+    padding: 35px;
+
+    border-radius: 14px;
+
+    position: sticky;
+    top: 25px;
+}
+
+.summary h2 {
+    font-size: 27px;
+
+    margin-bottom: 30px;
+}
+
+
+/* PRODUCT */
+
+.order-item {
+    display: grid;
+
+    grid-template-columns:
+        70px 1fr auto;
+
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #d8d5cf;
+}
+
+.order-image {
+    position: relative;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 8px;
+
+    background: white;
+
+    overflow: visible;
+}
+
+.order-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 5px;
+
+    border-radius: 8px;
+}
+
+.order-quantity {
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    width: 23px;
+    height: 23px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #111;
+    color: white;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.order-name {
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+.order-price {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* TOTALS */
+
+.totals {
+    padding-top: 25px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+    font-size: 13px;
+}
+
+.final-total {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid #ccc;
+
+    margin-top: 22px;
+    padding-top: 22px;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+/* PAYMENT PLACEHOLDER */
+
+.payment-box {
+    margin-top: 35px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.payment-title {
+    padding: 18px;
+
+    background: #f0eee8;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.payment-message {
+    padding: 25px;
+
+    background: white;
+
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* BUTTON */
+
+.place-order {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border: 0;
+
+    border-radius: 50px;
+
+    background: #111;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.place-order:hover {
+    background: #333;
+}
+
+.place-order:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+
+/* MESSAGE */
+
+.checkout-message {
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* EMPTY */
+
+.empty {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+.empty h1 {
+    font-size: 50px;
+
+    margin-bottom: 20px;
+}
+
+.empty a {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 16px 28px;
+
+    border-radius: 40px;
+
+    background: #111;
+    color: white;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 30px 6%;
+
+    border-top: 1px solid #ddd;
+
+    color: #777;
+
+    font-size: 11px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+
+    .checkout-page {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        margin-top: 35px;
+    }
+
+    .summary {
+        position: static;
+
+        order: -1;
+    }
+
+    .checkout-title {
+        margin-bottom: 40px;
+    }
+
+}
+
+
+@media(max-width: 550px) {
+
+    header {
+        height: 70px;
+
+        padding: 0 18px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .secure-header {
+        font-size: 10px;
+    }
+
+    .checkout-page {
+        width: calc(100% - 36px);
+    }
+
+    .checkout-title {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+    }
+
+    .two-columns,
+    .three-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .summary {
+        padding: 22px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<a href="index.html" class="logo">
+ZUNO
+</a>
+
+<div class="secure-header">
+🔒 Secure Checkout
+</div>
+
+</header>
+
+
+<main
+    class="checkout-page"
+    id="checkout-page"
+>
+
+
+<!-- CUSTOMER FORM -->
+
+<section>
+
+<p class="checkout-label">
+ZUNO CHECKOUT
+</p>
+
+<h1 class="checkout-title">
+Almost<br>
+yours.
+</h1>
+
+
+<form id="checkout-form">
+
+
+<!-- CONTACT -->
+
+<div class="form-section">
+
+<h2>
+Contact
+</h2>
+
+<div class="field">
+
+<label for="email">
+Email address
+</label>
+
+<input
+    type="email"
+    id="email"
+    placeholder="you@example.com"
+    required
+>
+
+</div>
+
+<div class="field">
+
+<label for="phone">
+Phone number
+</label>
+
+<input
+    type="tel"
+    id="phone"
+    placeholder="+1 000 000 0000"
+    required
+>
+
+</div>
+
+</div>
+
+
+<!-- DELIVERY -->
+
+<div class="form-section">
+
+<h2>
+Delivery
+</h2>
+
+
+<div class="field">
+
+<label for="country">
+Country / Region
+</label>
+
+<select
+    id="country"
+    required
+>
+
+<option value="">
+Select country
+</option>
+
+<option value="US">
+United States
+</option>
+
+<option value="CA">
+Canada
+</option>
+
+<option value="GB">
+United Kingdom
+</option>
+
+<option value="AU">
+Australia
+</option>
+
+<option value="DE">
+Germany
+</option>
+
+<option value="FR">
+France
+</option>
+
+<option value="other">
+Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="two-columns">
+
+<div class="field">
+
+<label for="first-name">
+First name
+</label>
+
+<input
+    type="text"
+    id="first-name"
+    required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="last-name">
+Last name
+</label>
+
+<input
+    type="text"
+    id="last-name"
+    required
+>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="address">
+Address
+</label>
+
+<input
+    type="text"
+    id="address"
+    placeholder="Street address"
+    required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="apartment">
+Apartment, suite, etc. (optional)
+</label>
+
+<input
+    type="text"
+    id="apartment"
+>
+
+</div>
+
+
+<div class="three-columns">
+
+<div class="field">
+
+<label for="city">
+City
+</label>
+
+<input
+    type="text"
+    id="city"
+    required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="state">
+State / Region
+</label>
+
+<input
+    type="text"
+    id="state"
+    required
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="postal">
+ZIP / Postal
+</label>
+
+<input
+    type="text"
+    id="postal"
+    required
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SHIPPING -->
+
+<div class="form-section">
+
+<h2>
+Shipping method
+</h2>
+
+<label class="shipping-option">
+
+<div class="shipping-option-left">
+
+<input
+    type="radio"
+    checked
+>
+
+<div>
+
+<div class="shipping-name">
+Standard Shipping
+</div>
+
+<div class="shipping-description">
+Shipping cost calculated when your
+live fulfillment system is connected.
+</div>
+
+</div>
+
+</div>
+
+<strong>
+—
+</strong>
+
+</label>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="form-section">
+
+<h2>
+Payment
+</h2>
+
+<div class="payment-box">
+
+<div class="payment-title">
+Secure payment
+</div>
+
+<div class="payment-message">
+
+Your ZUNO checkout interface is ready.
+
+A real payment gateway still needs to be
+connected before this website can charge
+customers. Do not collect card numbers
+directly with this HTML form.
+
+</div>
+
+</div>
+
+
+<button
+    type="submit"
+    class="place-order"
+    id="place-order"
+>
+
+CONTINUE TO PAYMENT →
+
+</button>
+
+
+<p class="checkout-message">
+
+Payment will be enabled after a real
+payment provider is connected.
+
+</p>
+
+</div>
+
+
+</form>
+
+</section>
+
+
+
+<!-- ORDER SUMMARY -->
+
+<aside class="summary">
+
+<h2>
+Your order
+</h2>
+
+
+<div id="order-items">
+</div>
+
+
+<div class="totals">
+
+<div class="total-row">
+
+<span>
+Subtotal
+</span>
+
+<strong id="subtotal">
+$0.00
+</strong>
+
+</div>
+
+
+<div class="total-row">
+
+<span>
+Shipping
+</span>
+
+<span>
+Calculated later
+</span>
+
+</div>
+
+
+<div class="final-total">
+
+<span>
+Total
+</span>
+
+<span id="total">
+$0.00
+</span>
+
+</div>
+
+</div>
+
+</aside>
+
+
+</main>
+
+
+<footer>
+
+<span>
+© 2026 ZUNO
+</span>
+
+<span>
+Made for pets. Designed for people.
+</span>
+
+<!-- RASSDIGITAL CREDIT -->
+
+<div
+    style="
+        margin-top:18px;
+        padding-top:18px;
+        border-top:1px solid rgba(255,255,255,0.08);
+        display:flex;
+        align-items:center;
+        gap:5px;
+        color:#777;
+        font-size:11px;
+        font-weight:400;
+        letter-spacing:0.2px;
+    "
+>
+    <span>Powered &amp; Designed by</span>
+
+    <a
+        href="https://rassdigitals.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+            color:#aaa;
+            font-size:11px;
+            font-weight:600;
+            text-decoration:none;
+        "
+    >
+        RassDigital
+    </a>
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* ======================================
+   CART
+====================================== */
+
+function getCart() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "zunoCart"
+        )
+    ) || [];
+
+}
+
+
+const cart =
+    getCart();
+
+
+const checkoutPage =
+    document.getElementById(
+        "checkout-page"
+    );
+
+
+/* ======================================
+   EMPTY CART
+====================================== */
+
+if (cart.length === 0) {
+
+    checkoutPage.innerHTML = `
+
+        <div class="empty">
+
+            <h1>
+                Your bag is empty.
+            </h1>
+
+            <p>
+                Add a ZUNO product before
+                checking out.
+            </p>
+
+            <a href="index.html">
+                SHOP ZUNO →
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ======================================
+   SHOW ORDER
+====================================== */
+
+if (cart.length > 0) {
+
+    const orderItems =
+        document.getElementById(
+            "order-items"
+        );
+
+
+    orderItems.innerHTML =
+        cart.map(
+            item => `
+
+            <div class="order-item">
+
+
+                <div class="order-image">
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                    <span class="order-quantity">
+                        ${item.quantity}
+                    </span>
+
+                </div>
+
+
+                <div class="order-name">
+                    ${item.name}
+                </div>
+
+
+                <div class="order-price">
+
+                    $${(
+                        item.price *
+                        item.quantity
+                    ).toFixed(2)}
+
+                </div>
+
+
+            </div>
+
+        `
+        ).join("");
+
+
+    /* TOTAL */
+
+    const subtotal =
+        cart.reduce(
+            (sum, item) =>
+
+                sum +
+                item.price *
+                item.quantity,
+
+            0
+        );
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        "$" +
+        subtotal.toFixed(2);
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        "$" +
+        subtotal.toFixed(2);
+
+}
+
+
+/* ======================================
+   CHECKOUT FORM
+====================================== */
+
+const form =
+    document.getElementById(
+        "checkout-form"
+    );
+
+
+if (form) {
+
+    form.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            /*
+            IMPORTANT:
+
+            Do NOT process card details
+            directly in frontend JavaScript.
+
+            Later this button will redirect
+            the customer to your real
+            payment provider.
+            */
+
+
+            const button =
+                document.getElementById(
+                    "place-order"
+                );
+
+
+            button.textContent =
+                "PAYMENT CONNECTION REQUIRED";
+
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        "CONTINUE TO PAYMENT →";
+
+                },
+                2200
+            );
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Bag | ZUNO</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #faf9f6;
+    color: #111;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/* HEADER */
+
+header {
+    height: 82px;
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ddd;
+    background: #faf9f6;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 6px;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.bag {
+    border: 1px solid #111;
+    border-radius: 40px;
+    padding: 12px 18px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* PAGE */
+
+.cart-page {
+    width: min(1250px, 90%);
+    margin: 70px auto 120px;
+}
+
+.cart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 50px;
+}
+
+.cart-top p {
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cart-top h1 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: .9;
+    letter-spacing: -5px;
+}
+
+.continue {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* LAYOUT */
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1.5fr .7fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* ITEMS */
+
+.cart-items {
+    border-top: 1px solid #ccc;
+}
+
+.cart-item {
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr auto;
+
+    gap: 25px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    align-items: center;
+}
+
+.item-image {
+    width: 150px;
+    height: 150px;
+
+    background: #f0eee8;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 8px;
+}
+
+.item-category {
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.item-price {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* QUANTITY */
+
+.item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #ccc;
+
+    border-radius: 40px;
+
+    height: 42px;
+}
+
+.quantity button {
+    width: 40px;
+    height: 100%;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 18px;
+}
+
+.quantity span {
+    min-width: 25px;
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.remove {
+    border: 0;
+    background: transparent;
+
+    color: #777;
+
+    text-decoration: underline;
+
+    font-size: 11px;
+}
+
+/* SUMMARY */
+
+.summary {
+    background: #f0eee8;
+
+    padding: 35px;
+
+    border-radius: 14px;
+
+    position: sticky;
+    top: 25px;
+}
+
+.summary h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 17px;
+
+    font-size: 13px;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid #ccc;
+
+    padding-top: 22px;
+    margin-top: 22px;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.shipping-note {
+    color: #777;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin: 20px 0;
+}
+
+.checkout {
+    width: 100%;
+
+    display: block;
+
+    background: #111;
+    color: #fff;
+
+    border: 0;
+
+    border-radius: 50px;
+
+    padding: 19px;
+
+    text-align: center;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.checkout:hover {
+    background: #333;
+}
+
+.secure {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 10px;
+
+    margin-top: 15px;
+}
+
+/* EMPTY CART */
+
+.empty-cart {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #ddd;
+}
+
+.empty-cart h2 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.empty-cart p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.empty-cart a {
+    display: inline-block;
+
+    background: #111;
+    color: white;
+
+    padding: 16px 30px;
+
+    border-radius: 40px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111;
+    color: white;
+
+    padding: 60px 6%;
+}
+
+.footer-logo {
+    font-size: clamp(70px, 15vw, 200px);
+    font-weight: 900;
+    letter-spacing: -7px;
+    line-height: .8;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+
+    margin-top: 60px;
+    padding-top: 20px;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .cart-page {
+        margin-top: 45px;
+    }
+
+    .cart-top {
+        display: block;
+    }
+
+    .continue {
+        display: inline-block;
+        margin-top: 25px;
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .item-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-actions {
+        grid-column: 2;
+        align-items: flex-start;
+    }
+
+    .summary {
+        position: static;
+    }
+
+    .cart-top h1 {
+        font-size: 60px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">
+ZUNO
+</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="shop.html?category=cats">Cats</a>
+<a href="shop.html?category=dogs">Dogs</a>
+<a href="about.html">Our Story</a>
+</nav>
+
+<div class="bag">
+Bag (<span id="header-count">0</span>)
+</div>
+
+</header>
+
+
+<main class="cart-page">
+
+<div class="cart-top">
+
+<div>
+
+<p>YOUR ZUNO BAG</p>
+
+<h1>
+Your<br>
+favorites.
+</h1>
+
+</div>
+
+<a href="index.html" class="continue">
+← CONTINUE SHOPPING
+</a>
+
+</div>
+
+
+<div id="cart-content"></div>
+
+</main>
+
+
+<footer>
+
+<div class="footer-logo">
+ZUNO
+</div>
+
+<div class="footer-bottom">
+© 2026 ZUNO — Made for pets. Designed for people.
+</div>
+
+<!-- RASSDIGITAL CREDIT -->
+
+<div
+    style="
+        margin-top:18px;
+        padding-top:18px;
+        border-top:1px solid rgba(255,255,255,0.08);
+        display:flex;
+        align-items:center;
+        gap:5px;
+        color:#777;
+        font-size:11px;
+        font-weight:400;
+        letter-spacing:0.2px;
+    "
+>
+    <span>Powered &amp; Designed by</span>
+
+    <a
+        href="https://rassdigitals.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+            color:#aaa;
+            font-size:11px;
+            font-weight:600;
+            text-decoration:none;
+        "
+    >
+        RassDigital
+    </a>
+</div>
+
+</footer>
+
+
+<script>
+
+function getCart() {
+
+    return JSON.parse(
+        localStorage.getItem("zunoCart")
+    ) || [];
+
+}
+
+
+function saveCart(cart) {
+
+    localStorage.setItem(
+        "zunoCart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+
+}
+
+
+function renderCart() {
+
+    const cart = getCart();
+
+    const container =
+        document.getElementById(
+            "cart-content"
+        );
+
+    const headerCount =
+        document.getElementById(
+            "header-count"
+        );
+
+
+    const totalQuantity =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.quantity,
+            0
+        );
+
+
+    headerCount.textContent =
+        totalQuantity;
+
+
+    /* EMPTY */
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty-cart">
+
+            <h2>
+                Your bag is empty.
+            </h2>
+
+            <p>
+                Your pet's next favorite thing
+                might be waiting.
+            </p>
+
+            <a href="index.html">
+                SHOP ZUNO →
+            </a>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    /* TOTAL */
+
+    const subtotal =
+        cart.reduce(
+            (sum, item) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+
+    /* ITEMS */
+
+    const itemsHTML =
+        cart.map(
+            (item, index) => `
+
+            <div class="cart-item">
+
+                <a
+                    href="product.html?id=${item.id}"
+                    class="item-image"
+                >
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                </a>
+
+
+                <div>
+
+                    <p class="item-category">
+                        ZUNO
+                    </p>
+
+                    <a
+                        href="product.html?id=${item.id}"
+                        class="item-name"
+                    >
+                        ${item.name}
+                    </a>
+
+                    <p class="item-price">
+                        $${item.price.toFixed(2)}
+                    </p>
+
+                </div>
+
+
+                <div class="item-actions">
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity(${index}, -1)"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(${index}, 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+        `
+        ).join("");
+
+
+    container.innerHTML = `
+
+        <div class="cart-layout">
+
+
+            <section class="cart-items">
+
+                ${itemsHTML}
+
+            </section>
+
+
+            <aside class="summary">
+
+                <h2>
+                    Order summary
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong>
+                        $${subtotal.toFixed(2)}
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <span>
+                        Calculated at checkout
+                    </span>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                        $${subtotal.toFixed(2)}
+                    </span>
+
+                </div>
+
+
+                <p class="shipping-note">
+
+                    Shipping costs and delivery
+                    availability will be calculated
+                    during checkout.
+
+                </p>
+
+
+                <a
+                    href="checkout.html"
+                    class="checkout"
+                >
+                    CHECKOUT →
+                </a>
+
+
+                <p class="secure">
+                    🔒 Secure checkout
+                </p>
+
+            </aside>
+
+        </div>
+
+    `;
+
+}
+
+
+function changeQuantity(
+    index,
+    amount
+) {
+
+    const cart =
+        getCart();
+
+
+    cart[index].quantity +=
+        amount;
+
+
+    if (
+        cart[index].quantity <= 0
+    ) {
+
+        cart.splice(
+            index,
+            1
+        );
+
+    }
+
+
+    saveCart(cart);
+
+}
+
+
+function removeItem(index) {
+
+    const cart =
+        getCart();
+
+
+    cart.splice(
+        index,
+        1
+    );
+
+
+    saveCart(cart);
+
+}
+
+
+renderCart();
+
+</script>
+
+</body>
+</html>
